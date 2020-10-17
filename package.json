@@ -1,0 +1,28 @@
+{
+  "name": "dialogbox-vue",
+  "version": "1.0.0",
+  "description": "Opening a dialogbox with customized content and many choosable dialog buttons",
+  "main": "index.js",
+  "scripts": {
+    "test": "vue serve ./dev/Test.vue"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uriegel/dialogbox-vue.git"
+  },
+  "keywords": [
+    "Javascript",
+    "Vue",
+    "Vue plugin"
+  ],
+  "author": "Uwe Riegel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uriegel/dialogbox-vue/issues"
+  },
+  "homepage": "https://github.com/uriegel/dialogbox-vue#readme",
+  "devDependencies": {
+    "@vue/cli": "^4.5.7",
+    "@vue/cli-service-global": "^4.5.7"
+  }
+}
