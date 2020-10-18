@@ -5,7 +5,7 @@
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
         </p>
         <p>
-            <button>Show Dialog</button>
+            <button @click="showDialog">Show Dialog</button>
         </p>
         <p>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
@@ -49,17 +49,34 @@
         <p>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
         </p>
+        <dialog-box ref="dialog" @state-changed=onDialogStateChanged></dialog-box>
     </div>
 </template>
 
 <script>
 import Vue from 'vue'
+import DialogBox from '../DialogBox'
 
 export default Vue.extend({
     data() {
         return {
+            dialogOpen: false
         }
     },
+    components: {
+        DialogBox
+    },
+    methods:{
+        async showDialog() {
+            await this.$refs.dialog.show({
+                ok: true, 
+                cancel : true,
+                defButton: "ok",
+                text: "Der Text der Dialogbox", 
+            })
+        },
+        onDialogStateChanged(isShowing) { this.dialogOpen = isShowing }
+    }
 })
 </script>
 
@@ -74,11 +91,12 @@ body {
     display:flex;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
+    overflow: hidden;
     padding: 0px;
 }
 </style>
 <style scoped>
 .root {
-    overflow: hidden;
+    
 }
 </style>

@@ -27,14 +27,9 @@
         </transition>                        
     </div>
 </template>
-    
-</template>
 
 <script>
 import Vue from 'vue'
-import SimpleDialog from './SimpleDialog'
-import ConflictItems from './ConflictItems'
-import ExtendedRename from './ExtendedRename'
 
 export default {
     data() {
@@ -71,9 +66,6 @@ export default {
         } 
     },
     components: {
-        SimpleDialog,
-        ConflictItems,
-        ExtendedRename
     },
     methods: {
         show(config) {
@@ -130,6 +122,7 @@ export default {
         onKeydown(evt) {
             switch (evt.which) {
                 case 9: // tab
+                {
                     const active = document.activeElement
                     const setFocus = () => {
                         this.focusIndex = evt.shiftKey ? this.focusIndex - 1 : this.focusIndex + 1
@@ -143,6 +136,7 @@ export default {
                     }
                     setFocus()
                     break
+                }
                 case 13: // Return
                     if (this.defButton && !this.isButtonFocused) {
                         this.result = 
