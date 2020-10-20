@@ -5,7 +5,7 @@
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
         </p>
         <p>
-            <button @click="showDialog">Show Dialog</button>
+            <button @click="showDialog">Show Dialog</button> <button @click="showDialog2">Show Dialog 2</button> <button @click="showDialog3">Slide Left</button> <button @click="showDialog4">Slide Right</button>
         </p>
         <p>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
@@ -72,7 +72,31 @@ export default Vue.extend({
                 ok: true, 
                 cancel : true,
                 defButton: "ok",
-                text: "Der Text der Dialogbox", 
+                text: "Standard", 
+            })
+        },
+        async showDialog2() {
+            await this.$refs.dialog.show({
+                ok: true, 
+                cancel : true,
+                defButton: "cancel",
+                text: "Standard Cancel", 
+            })
+        },
+        async showDialog3() {
+            await this.$refs.dialog.show({
+                ok: true, 
+                cancel : true,
+                slideLeft: true,
+                text: "Slide Left", 
+            })
+        },
+        async showDialog4() {
+            await this.$refs.dialog.show({
+                ok: true, 
+                cancel : true,
+                slideRight: true,
+                text: "Slide Right", 
             })
         },
         onDialogStateChanged(isShowing) { this.dialogOpen = isShowing }
@@ -82,9 +106,8 @@ export default Vue.extend({
 
 <style>
 :root {
-    --gridsplitter-grip-color: lightgray;
-    --gridsplitter-grip-hover-color: darkgray;
-    --gridsplitter-grip-active-color: #6b6969;
+    --dialog-main-background-color: white;
+    --dialog-fader-color: rgba(0, 0, 0, 0.50);
 }
 body {
     height: 100vh;

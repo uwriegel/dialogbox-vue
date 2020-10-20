@@ -7,7 +7,7 @@
             <div class="dialogContainer" v-if="isShowing">
                 <div class="dialog" :class="{fullscreen: fullscreen}" @keydown="onKeydown">
                     <p v-if="text">{{text}}</p>
-                    <div>Der Inhalt</div>
+                    <!-- <div></div> -->
                     <div class="buttons">
                         <div ref=btn1 tabindex="1" v-if="yes" @focus="onFocus" @blur="onBlur" 
                             class="dialogButton pointer-def" :class="{default: isButtonYesDefault}"
@@ -70,9 +70,9 @@ export default {
     methods: {
         show(config) {
             this.transitionNames = 
-                config.rightFolder 
+                config.slideLeft
                     ? [ "slide-left", "slide-right" ] 
-                    : (config.leftFolder 
+                    : (config.slideRight 
                     ? [ "slide-right", "slide-left" ]
                     : [ "default", "default" ] )
             this.transitionName = this.transitionNames[0]
@@ -215,9 +215,10 @@ export default {
     height: 100%;
 }
 .fader {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
+    top: 0px;
     opacity: 1;
     background-color: var(--dialog-fader-color);
 }
@@ -242,7 +243,7 @@ export default {
     box-sizing: border-box;
     padding: 30px;
     border-radius: 5px;
-    background-color: var(--main-background-color);
+    background-color: var(--dialog-main-background-color);
     z-index: 10;
     transform: translateX(0%);
     box-shadow: 5px 4px 8px 2px rgba(0, 0, 0, 0.35), 0px 0px 20px 2px rgba(0, 0, 0, 0.25);
@@ -259,12 +260,12 @@ export default {
 .dialogButton {
     display: inline-block;
     background-color: blue;
-    outline-color: var(--main-background-color);
+    outline-color: var(--dialog-main-background-color);
     user-select: none;
     color: white;
     text-align: center;
-    width: 80px;
-    height: 20px;
+    width: 60px;
+    height: 15px;
     line-height: 20px;
     transition: background-color 0.3s, outline-color 400ms;
     border-radius: 3px;
