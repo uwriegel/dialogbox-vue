@@ -88,6 +88,7 @@ export default Vue.extend({
                 ok: true, 
                 cancel : true,
                 slideLeft: true,
+                defButton: "ok",
                 text: "Slide Left", 
             })
         },
@@ -96,6 +97,7 @@ export default Vue.extend({
                 ok: true, 
                 cancel : true,
                 slideRight: true,
+                defButton: "ok",
                 text: "Slide Right", 
             })
         },

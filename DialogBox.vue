@@ -115,9 +115,26 @@ export default {
             const buttonCount = this.focusables.length
             if (this.content) 
                 this.content.getFocusables().forEach(n => this.focusables.push(n))
-            this.focusIndex = this.content ? this.content.getFocusIndex(buttonCount) : 0
+            this.focusIndex = this.content ? this.content.getFocusIndex(buttonCount) : this.getFocusedBtnIndex()
             this.defButton = this.content ? this.content.getDefaultButton(this.defButton) : this.defButton
             this.focusables[this.focusIndex].focus()
+        },
+        getFocusedBtnIndex()  {
+            switch (this.defButton) {
+                case "yes":
+                    return 0
+                case "ok":
+                    return this.$refs.btn1 ? 1 : 0
+                case "no":
+                    return this.$refs.btn1 && this.$refs.btn2 ? 2 : this.$refs.btn1 || this.$refs.btn2 ? 1 : 0
+                case "cancel":
+                {
+                    let bs = this.$refs.btn1 ? 1 : 0
+                    bs += this.$refs.btn2 ? 1 : 0
+                    bs += this.$refs.btn3 ? 1 : 0
+                    return bs
+                }
+            }
         },
         onKeydown(evt) {
             switch (evt.which) {
