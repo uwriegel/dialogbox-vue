@@ -104,14 +104,32 @@ export default {
         mounted() {
             this.focusables = []
             this.content = this.$refs.simpleDialog || this.$refs.conflictsDialog || this.$refs.extendedRename
-            if (this.$refs.btn1)
+            let width = 0
+            if (this.$refs.btn1) {
                 this.focusables.push(this.$refs.btn1)
-            if (this.$refs.btn2)
+                width = this.$refs.btn1.clientWidth
+            }
+            if (this.$refs.btn2) {
                 this.focusables.push(this.$refs.btn2)
-            if (this.$refs.btn3)
+                width = Math.max(width, this.$refs.btn2.clientWidth)
+            }
+            if (this.$refs.btn3) {
                 this.focusables.push(this.$refs.btn3)
-            if (this.$refs.btn4)
+                width = Math.max(width, this.$refs.btn3.clientWidth)
+            }
+            if (this.$refs.btn4) {
                 this.focusables.push(this.$refs.btn4)
+                width = Math.max(width, this.$refs.btn4.clientWidth)
+            }
+            if (this.$refs.btn1) 
+                this.$refs.btn1.style.width = `${width}px`
+            if (this.$refs.btn2) 
+                this.$refs.btn2.style.width = `${width}px`
+            if (this.$refs.btn3) 
+                this.$refs.btn3.style.width = `${width}px`
+            if (this.$refs.btn4) 
+                this.$refs.btn4.style.width = `${width}px`
+
             const buttonCount = this.focusables.length
             if (this.content) 
                 this.content.getFocusables().forEach(n => this.focusables.push(n))
@@ -281,9 +299,8 @@ export default {
     user-select: none;
     color: white;
     text-align: center;
-    width: 60px;
-    height: 15px;
-    line-height: 20px;
+    padding: 2px 7px;
+    /* line-height: 20px; */
     transition: background-color 0.3s, outline-color 400ms;
     border-radius: 3px;
     margin-left: 5px;

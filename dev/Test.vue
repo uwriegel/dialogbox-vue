@@ -5,7 +5,7 @@
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
         </p>
         <p>
-            <button @click="showDialog">Show Dialog</button> <button @click="showDialog2">Show Dialog 2</button> <button @click="showDialog3">Slide Left</button> <button @click="showDialog4">Slide Right</button>
+            <button @click="showDialog">Show Dialog</button> <button @click="showDialog2">Show Dialog 2</button> <button @click="showDialog3">Slide Left</button> <button @click="showDialog4">Slide Right</button> <button @click="showDialog5">3 Buttons</button>
         </p>
         <p>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
@@ -99,6 +99,15 @@ export default Vue.extend({
                 slideRight: true,
                 defButton: "ok",
                 text: "Slide Right", 
+            })
+        },
+        async showDialog5() {
+            await this.$refs.dialog.show({
+                no: true, 
+                yes: true, 
+                cancel : true,
+                defButton: "no",
+                text: "3 Knöpfe", 
             })
         },
         onDialogStateChanged(isShowing) { this.dialogOpen = isShowing }
