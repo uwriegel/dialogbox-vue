@@ -49,7 +49,10 @@
         <p>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
         </p>
-        <dialog-box ref="dialog" @state-changed=onDialogStateChanged></dialog-box>
+        <dialog-box ref="dialog" @state-changed=onDialogStateChanged>
+            <div>Du alter Affe!</div>
+            <div>Du neuer Affe!</div>
+        </dialog-box>
     </div>
 </template>
 

@@ -7,7 +7,7 @@
             <div class="dialogContainer" v-if="isShowing">
                 <div class="dialog" :class="{fullscreen: fullscreen}" @keydown="onKeydown">
                     <p v-if="text">{{text}}</p>
-                    <!-- <div></div> -->
+                    <slot></slot>
                     <div class="buttons">
                         <div ref=btn1 tabindex="1" v-if="yes" @focus="onFocus" @blur="onBlur" 
                             class="dialogButton pointer-def" :class="{default: isButtonYesDefault}"
