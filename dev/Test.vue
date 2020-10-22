@@ -5,7 +5,7 @@
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
         </p>
         <p>
-            <button @click="showDialog">Show Dialog</button> <button @click="showDialog2">Show Dialog 2</button> <button @click="showDialog3">Slide Left</button> <button @click="showDialog4">Slide Right</button> <button @click="showDialog5">3 Buttons</button>
+            <button @click="showDialog">Show Dialog</button> <button @click="showDialog2">Show Dialog 2</button> <button @click="showDialog3">Slide Left</button> <button @click="showDialog4">Slide Right</button> <button @click="showDialog5">3 Buttons</button> <button @click="showDialog6">Text input</button>
         </p>
         <p>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
@@ -50,8 +50,7 @@
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
         </p>
         <dialog-box ref="dialog" @state-changed=onDialogStateChanged>
-            <div>Du alter Affe!</div>
-            <div>Du neuer Affe!</div>
+            <text-input-dialog v-if="textInput"></text-input-dialog>
         </dialog-box>
     </div>
 </template>
@@ -59,15 +58,18 @@
 <script>
 import Vue from 'vue'
 import DialogBox from '../DialogBox'
+import TextInputDialog from "./TextInputDialog"
 
 export default Vue.extend({
     data() {
         return {
-            dialogOpen: false
+            dialogOpen: false,
+            textInput: false
         }
     },
     components: {
-        DialogBox
+        DialogBox,
+        TextInputDialog
     },
     methods:{
         async showDialog() {
@@ -112,6 +114,16 @@ export default Vue.extend({
                 defButton: "no",
                 text: "3 Knöpfe", 
             })
+        },
+        async showDialog6() {
+            this.textInput = true
+            await this.$refs.dialog.show({
+                ok: true, 
+                cancel : true,
+                defButton: "ok",
+                text: "Der Text input:", 
+            })
+            this.textInput = false
         },
         onDialogStateChanged(isShowing) { this.dialogOpen = isShowing }
     }
