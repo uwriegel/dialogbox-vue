@@ -88,6 +88,7 @@ export default {
                 this.extendedRename = config.extendedRename
                 this.resolve = res
                 this.text = config.text
+                this.getContent = config.getContent
                 this.reject = rej
                 this.isShowing = true
                 this.dialogClosed = false
@@ -102,8 +103,8 @@ export default {
             this.isButtonFocused = false
         },
         mounted() {
+            const content = this.getContent ? this.getContent() : undefined
             this.focusables = []
-            this.content = this.$refs.simpleDialog || this.$refs.conflictsDialog || this.$refs.extendedRename
             let width = 0
             if (this.$refs.btn1) {
                 this.focusables.push(this.$refs.btn1)
@@ -131,10 +132,10 @@ export default {
                 this.$refs.btn4.style.width = `${width}px`
 
             const buttonCount = this.focusables.length
-            if (this.content) 
-                this.content.getFocusables().forEach(n => this.focusables.push(n))
-            this.focusIndex = this.content ? this.content.getFocusIndex(buttonCount) : this.getFocusedBtnIndex()
-            this.defButton = this.content ? this.content.getDefaultButton(this.defButton) : this.defButton
+            if (content) 
+                content.getFocusables().forEach(n => this.focusables.push(n))
+            this.focusIndex = content ? content.getFocusIndex(buttonCount) : this.getFocusedBtnIndex()
+            this.defButton = content ? content.getDefaultButton(this.defButton) : this.defButton
             this.focusables[this.focusIndex].focus()
         },
         getFocusedBtnIndex()  {

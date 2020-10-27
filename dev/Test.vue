@@ -50,7 +50,7 @@
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
         </p>
         <dialog-box ref="dialog" @state-changed=onDialogStateChanged>
-            <text-input-dialog v-if="textInput"></text-input-dialog>
+            <text-input-dialog ref=textinput v-if="textInput"></text-input-dialog>
         </dialog-box>
     </div>
 </template>
@@ -121,9 +121,10 @@ export default Vue.extend({
                 ok: true, 
                 cancel : true,
                 defButton: "ok",
+                getContent: () => this.$refs.textinput,
                 text: "Der Text input:", 
             })
-            this.textInput = false
+            this.textInput = false            
         },
         onDialogStateChanged(isShowing) { this.dialogOpen = isShowing }
     }
@@ -145,7 +146,4 @@ body {
 }
 </style>
 <style scoped>
-.root {
-    
-}
 </style>
