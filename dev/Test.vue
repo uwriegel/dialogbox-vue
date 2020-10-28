@@ -73,57 +73,63 @@ export default Vue.extend({
     },
     methods:{
         async showDialog() {
-            await this.$refs.dialog.show({
+            const ret = await this.$refs.dialog.show({
                 ok: true, 
                 cancel : true,
                 defButton: "ok",
                 text: "Standard", 
             })
+            console.log(ret)
         },
         async showDialog2() {
-            await this.$refs.dialog.show({
+            const ret = await this.$refs.dialog.show({
                 ok: true, 
                 cancel : true,
                 defButton: "cancel",
                 text: "Standard Cancel", 
             })
+            console.log(ret)
         },
         async showDialog3() {
-            await this.$refs.dialog.show({
+            const ret = await this.$refs.dialog.show({
                 ok: true, 
                 cancel : true,
                 slideLeft: true,
                 defButton: "ok",
                 text: "Slide Left", 
             })
+            console.log(ret)
         },
         async showDialog4() {
-            await this.$refs.dialog.show({
+            const ret = await this.$refs.dialog.show({
                 ok: true, 
                 cancel : true,
                 slideRight: true,
                 defButton: "ok",
                 text: "Slide Right", 
             })
+            console.log(ret)
         },
         async showDialog5() {
-            await this.$refs.dialog.show({
+            const ret = await this.$refs.dialog.show({
                 no: true, 
                 yes: true, 
                 cancel : true,
                 defButton: "no",
                 text: "3 Knöpfe", 
             })
+            console.log(ret)
         },
         async showDialog6() {
             this.textInput = true
-            await this.$refs.dialog.show({
+            const ret = await this.$refs.dialog.show({
                 ok: true, 
                 cancel : true,
                 defButton: "ok",
                 getContent: () => this.$refs.textinput,
                 text: "Der Text input:", 
             })
+            console.log(ret)
             this.textInput = false            
         },
         onDialogStateChanged(isShowing) { this.dialogOpen = isShowing }

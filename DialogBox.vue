@@ -47,7 +47,6 @@ export default {
             conflictItems: null,
             extendedRename: null,
             isButtonFocused: false,
-            inputText: "",
             fullscreen: false
         }
     },
@@ -237,7 +236,6 @@ export default {
             this.dialogClosed = true
             Vue.nextTick(() => this.resolve({
                 result: this.result,
-                inputText: this.inputText
             }))
         }
     }
