@@ -46,6 +46,7 @@ export default {
             simpleDialog: null,
             conflictItems: null,
             extendedRename: null,
+            focusedElement: null,
             isButtonFocused: false,
             fullscreen: false
         }
@@ -68,6 +69,7 @@ export default {
     },
     methods: {
         show(config) {
+            this.focusedElement = document.activeElement
             this.transitionNames = 
                 config.slideLeft
                     ? [ "slide-left", "slide-right" ] 
@@ -234,9 +236,11 @@ export default {
         },
         afterLeave() {
             this.dialogClosed = true
-            Vue.nextTick(() => this.resolve({
-                result: this.result,
-            }))
+            Vue.nextTick(() => {
+                if (this.focusedElement)
+                    this.focusedElement.focus()
+                this.resolve({ result: this.result })
+            })
         }
     }
 }
