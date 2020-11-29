@@ -245,7 +245,6 @@ export default {
     }
 }
 </script>
-
 <style scoped>
 .dialogroot {
     position: absolute;
@@ -297,7 +296,7 @@ export default {
 
 .dialogButton {
     display: inline-block;
-    background-color: blue;
+    background-color: var(--dialog-button-color);
     outline-color: var(--dialog-main-background-color);
     user-select: none;
     color: white;
@@ -313,7 +312,7 @@ export default {
 }
 
 .dialogButton:hover {
-    background-color: #7979ff;
+    background-color: var(--dialog-button-hover-color);
 }
 .dialogButton.isDefaultButton {
     outline-color: gray;
@@ -322,7 +321,7 @@ export default {
     outline-offset: 1px;
 }
 .dialogButton:active, .buttonActive {
-    background-color: #01018e;
+    background-color: var(--dialog-button-active-color);
 }
 .dialogButton.default {
     outline-color: rgb(160, 160, 160);
@@ -331,7 +330,7 @@ export default {
     outline-offset: 1px;
 }
 .dialogButton:focus {
-    outline-color: blue;
+    outline-color: var(--dialog-button-focus-color);
     outline-width: 1px;
     outline-style: solid;
     outline-offset: 1px;

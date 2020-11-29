@@ -136,11 +136,23 @@ export default Vue.extend({
     }
 })
 </script>
+/*
+    --dialog-button-color: blue;
+    --dialog-button-hover-color: #7979ff;
+    --dialog-button-active-color: #01018e;
+    --dialog-button-focus-color: blue;
+*/
 
 <style>
 :root {
     --dialog-main-background-color: white;
     --dialog-fader-color: rgba(0, 0, 0, 0.50);
+
+    --dialog-button-color: #e95420;
+    --dialog-button-hover-color: #e7835f;
+    --dialog-button-active-color: #b94116;
+    --dialog-button-focus-color: #e95420;
+
 }
 body {
     height: 100vh;
