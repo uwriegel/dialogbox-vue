@@ -188,7 +188,7 @@ export default {
                     }
                     break
                 case 27: // ESC
-                    if (this.cancel) {
+                    if (this.cancel || !this.no) {
                         this.result = 0
                         this.onClose()
                     }
