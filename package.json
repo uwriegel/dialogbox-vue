@@ -1,6 +1,6 @@
 {
   "name": "dialogbox-vue",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Opening a dialogbox with customized content and many choosable dialog buttons",
   "main": "index.js",
   "scripts": {
