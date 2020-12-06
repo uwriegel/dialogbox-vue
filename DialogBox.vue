@@ -7,7 +7,7 @@
             <div class="dialogContainer" v-if="isShowing">
                 <div class="dialog" :class="{fullscreen: fullscreen}" @keydown="onKeydown">
                     <p v-if="text">{{text}}</p>
-                    <text-input-dialog ref=textinput v-if="textInput"></text-input-dialog>
+                    <text-input-dialog ref=textinput v-if="textInput" v-model="textInputValue"></text-input-dialog>
                     <slot></slot>
                     <div class="buttons">
                         <div ref=btn1 tabindex="1" v-if="yes" @focus="onFocus" @blur="onBlur" 
@@ -98,7 +98,6 @@ export default {
                 this.dialogClosed = false
                 this.fullscreen = config.conflictItems
                 this.textInput = config.textInput
-                // TODO: Binding textInputValue to input value
                 this.textInputValue = config.textInputValue
                 Vue.nextTick(() => this.mounted())
             })
@@ -236,8 +235,8 @@ export default {
         onClose() {
             if (this.result == 0)
                 this.transitionName = this.transitionNames[1]
-            if (this.result == 1 || this.result == 2)
-                this.textInputValue = this.textInput ? this.$refs.textinput.getFocusables()[0].value : ""
+            if (this.result == 0 || this.result == 3)
+                this.textInputValue = ""
             this.$emit("state-changed", false)
             Vue.nextTick(() => this.isShowing = false)
         },

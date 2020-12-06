@@ -121,9 +121,10 @@ export default Vue.extend({
                 cancel : true,
                 defButton: "ok",
                 textInput: true,
+                textInputValue: "Der Input", 
                 text: "Der Text input:", 
             })
-            console.log(ret, this.$refs.dialog.inputText)
+            console.log(ret, this.$refs.dialog.textInputValue)
         },
         async showDialog7() {
             await this.$refs.dialog.show({

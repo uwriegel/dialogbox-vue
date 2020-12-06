@@ -1,10 +1,28 @@
 <template>
-    <input ref=input>
+    <input v-selectall ref=input v-model="content" @input="handleInput">
 </template>
     
 <script>
 export default {
+    props: {
+        value: String
+    },
+    data() {
+        return {
+            content: this.value
+        }
+    },
+    directives: {    
+        selectall: {
+            inserted: function(el) {
+                el.addEventListener("focus", () => setTimeout(() => el.select()))
+            }            
+        }
+    },
     methods: {
+        handleInput() {
+            this.$emit('input', this.content)
+        },        
         getFocusables() { return [ this.$refs.input ] },
         getFocusIndex(buttonCount) { return buttonCount }, 
         getDefaultButton(defBtn) { return defBtn }
