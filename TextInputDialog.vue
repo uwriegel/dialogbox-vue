@@ -30,7 +30,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 input {
     background-color: var(--dialog-main-background-color);
     color: var(--dialog-main-color);
@@ -43,5 +43,9 @@ input:focus {
     border-color: transparent;
     outline-width: 1px;
     outline-style: solid;
+}
+input::selection {
+    color: white;
+    background-color: var(--dialog-button-color);
 }
 </style>

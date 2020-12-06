@@ -146,10 +146,21 @@ export default Vue.extend({
 })
 </script>
 /*
+    --dialog-main-color: black;
+    --dialog-main-background-color: white;
+    --dialog-fader-color: rgba(0, 0, 0, 0.50);
     --dialog-button-color: blue;
     --dialog-button-hover-color: #7979ff;
     --dialog-button-active-color: #01018e;
     --dialog-button-focus-color: blue;
+
+    --dialog-main-color: black;
+    --dialog-main-background-color: white;
+    --dialog-fader-color: rgba(0, 0, 0, 0.50);
+    --dialog-button-color: #e95420;
+    --dialog-button-hover-color: #e7835f;
+    --dialog-button-active-color: #b94116;
+    --dialog-button-focus-color: #e95420;
 
     --dialog-main-color: white;
     --dialog-main-background-color:  #444;
@@ -158,26 +169,17 @@ export default Vue.extend({
     --dialog-button-hover-color: #e7835f;
     --dialog-button-active-color: #b94116;
     --dialog-button-focus-color: #e95420;    
-
-    --dialog-main-color: black;
-    --dialog-main-background-color: white;
-    --dialog-fader-color: rgba(0, 0, 0, 0.50);
-    --dialog-button-color: #e95420;
-    --dialog-button-hover-color: #e7835f;
-    --dialog-button-active-color: #b94116;
-    --dialog-button-focus-color: #e95420;
-
 */
 
 <style>
 :root {
-    --dialog-main-color: black;
-    --dialog-main-background-color: white;
+    --dialog-main-color: white;
+    --dialog-main-background-color:  #444;
     --dialog-fader-color: rgba(0, 0, 0, 0.50);
     --dialog-button-color: #e95420;
     --dialog-button-hover-color: #e7835f;
     --dialog-button-active-color: #b94116;
-    --dialog-button-focus-color: #e95420;
+    --dialog-button-focus-color: #e95420;    
 }
 body {
     height: 100vh;
