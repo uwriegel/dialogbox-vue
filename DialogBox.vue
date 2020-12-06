@@ -54,7 +54,6 @@ export default {
             isButtonFocused: false,
             fullscreen: false,
             textInput: false,
-            inputText: "",
             textInputValue: ""
         }
     },
@@ -99,6 +98,7 @@ export default {
                 this.dialogClosed = false
                 this.fullscreen = config.conflictItems
                 this.textInput = config.textInput
+                // TODO: Binding textInputValue to input value
                 this.textInputValue = config.textInputValue
                 Vue.nextTick(() => this.mounted())
             })
@@ -237,7 +237,7 @@ export default {
             if (this.result == 0)
                 this.transitionName = this.transitionNames[1]
             if (this.result == 1 || this.result == 2)
-                this.inputText = this.textInput ? this.$refs.textinput.getFocusables()[0].value : ""
+                this.textInputValue = this.textInput ? this.$refs.textinput.getFocusables()[0].value : ""
             this.$emit("state-changed", false)
             Vue.nextTick(() => this.isShowing = false)
         },
