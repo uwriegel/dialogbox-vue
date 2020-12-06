@@ -27,7 +27,7 @@ export interface DialogOptions {
     text?: string
     slideLeft?: boolean
     slideRight?: boolean
-    textInput?: false
+    textInput?: boolean
     textInputValue?: string
 }
 
