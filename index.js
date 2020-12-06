@@ -7,3 +7,7 @@ export default {
         Vue.component("vue-dialog-box", DialogBox)
     }
 }
+
+export async function showDialog(dialogRef, dialogOptions) {
+    return await dialogRef.show(dialogOptions)
+}
