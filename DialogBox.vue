@@ -7,6 +7,7 @@
             <div class="dialogContainer" v-if="isShowing">
                 <div class="dialog" :class="{fullscreen: fullscreen}" @keydown="onKeydown">
                     <p v-if="text">{{text}}</p>
+                    <text-input-dialog ref=textinput v-if="textInput"></text-input-dialog>
                     <slot></slot>
                     <div class="buttons">
                         <div ref=btn1 tabindex="1" v-if="yes" @focus="onFocus" @blur="onBlur" 
@@ -30,8 +31,12 @@
 
 <script>
 import Vue from 'vue'
+import TextInputDialog from "./TextInputDialog"
 
 export default {
+    components: {
+        TextInputDialog
+    },
     data() {
         return {
             transitionName: "default",
@@ -43,12 +48,14 @@ export default {
             cancel: false, 
             defButton: "",
             text: "",
-            simpleDialog: null,
             conflictItems: null,
             extendedRename: null,
             focusedElement: null,
             isButtonFocused: false,
-            fullscreen: false
+            fullscreen: false,
+            textInput: false,
+            inputText: "",
+            textInputValue: ""
         }
     },
     computed: {
@@ -64,8 +71,6 @@ export default {
         isButtonCancelDefault() {
             return this.defButton == "cancel" && !this.isButtonFocused
         } 
-    },
-    components: {
     },
     methods: {
         show(config) {
@@ -84,16 +89,17 @@ export default {
                 this.defButton = config.defButton
                 this.yes = config.yes
                 this.cancel = config.cancel
-                this.simpleDialog = config.simpleDialog
                 this.conflictItems = config.conflictItems
                 this.extendedRename = config.extendedRename
                 this.resolve = res
                 this.text = config.text
-                this.getContent = config.getContent
+                this.getContent = config.textInput ? () => this.$refs.textinput : config.getContent
                 this.reject = rej
                 this.isShowing = true
                 this.dialogClosed = false
                 this.fullscreen = config.conflictItems
+                this.textInput = config.textInput
+                this.textInputValue = config.textInputValue
                 Vue.nextTick(() => this.mounted())
             })
         },
@@ -230,7 +236,8 @@ export default {
         onClose() {
             if (this.result == 0)
                 this.transitionName = this.transitionNames[1]
-            this.inputText = this.$refs.simpleDialog ? this.$refs.simpleDialog.getInputText() : ""
+            if (this.result == 1 || this.result == 2)
+                this.inputText = this.textInput ? this.$refs.textinput.getFocusables()[0].value : ""
             this.$emit("state-changed", false)
             Vue.nextTick(() => this.isShowing = false)
         },
@@ -280,6 +287,7 @@ export default {
     box-sizing: border-box;
     padding: 30px;
     border-radius: 5px;
+    color: var(--dialog-main-color);
     background-color: var(--dialog-main-background-color);
     z-index: 10;
     transform: translateX(0%);

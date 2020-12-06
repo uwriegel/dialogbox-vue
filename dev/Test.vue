@@ -49,27 +49,22 @@
         <p>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
         </p>
-        <dialog-box ref="dialog" @state-changed=onDialogStateChanged>
-            <text-input-dialog ref=textinput v-if="textInput"></text-input-dialog>
-        </dialog-box>
+        <dialog-box ref="dialog" @state-changed=onDialogStateChanged></dialog-box>
     </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import DialogBox from '../DialogBox'
-import TextInputDialog from "./TextInputDialog"
 
 export default Vue.extend({
     data() {
         return {
-            dialogOpen: false,
-            textInput: false
+            dialogOpen: false
         }
     },
     components: {
-        DialogBox,
-        TextInputDialog
+        DialogBox
     },
     methods:{
         async showDialog() {
@@ -121,16 +116,14 @@ export default Vue.extend({
             console.log(ret)
         },
         async showDialog6() {
-            this.textInput = true
             const ret = await this.$refs.dialog.show({
                 ok: true, 
                 cancel : true,
                 defButton: "ok",
-                getContent: () => this.$refs.textinput,
+                textInput: true,
                 text: "Der Text input:", 
             })
-            console.log(ret)
-            this.textInput = false            
+            console.log(ret, this.$refs.dialog.inputText)
         },
         async showDialog7() {
             await this.$refs.dialog.show({
@@ -156,18 +149,34 @@ export default Vue.extend({
     --dialog-button-hover-color: #7979ff;
     --dialog-button-active-color: #01018e;
     --dialog-button-focus-color: blue;
-*/
 
-<style>
-:root {
+    --dialog-main-color: white;
+    --dialog-main-background-color:  #444;
+    --dialog-fader-color: rgba(0, 0, 0, 0.50);
+    --dialog-button-color: #e95420;
+    --dialog-button-hover-color: #e7835f;
+    --dialog-button-active-color: #b94116;
+    --dialog-button-focus-color: #e95420;    
+
+    --dialog-main-color: black;
     --dialog-main-background-color: white;
     --dialog-fader-color: rgba(0, 0, 0, 0.50);
-
     --dialog-button-color: #e95420;
     --dialog-button-hover-color: #e7835f;
     --dialog-button-active-color: #b94116;
     --dialog-button-focus-color: #e95420;
 
+*/
+
+<style>
+:root {
+    --dialog-main-color: black;
+    --dialog-main-background-color: white;
+    --dialog-fader-color: rgba(0, 0, 0, 0.50);
+    --dialog-button-color: #e95420;
+    --dialog-button-hover-color: #e7835f;
+    --dialog-button-active-color: #b94116;
+    --dialog-button-focus-color: #e95420;
 }
 body {
     height: 100vh;

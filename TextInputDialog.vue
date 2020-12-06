@@ -14,13 +14,14 @@ export default {
 
 <style>
 input {
-    background-color: white;
-    color: black;
+    background-color: var(--dialog-main-background-color);
+    color: var(--dialog-main-color);
     border-color: gray;
+    border-style: solid;
     border-width: 1px;
 }
 input:focus {
-    outline-color: blue;
+    outline-color: var(--dialog-button-active-color);
     border-color: transparent;
     outline-width: 1px;
     outline-style: solid;
