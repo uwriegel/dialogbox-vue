@@ -245,7 +245,7 @@ export default {
             Vue.nextTick(() => {
                 if (this.focusedElement)
                     this.focusedElement.focus()
-                this.resolve({ result: this.result })
+                this.resolve(this.result)
             })
         }
     }
