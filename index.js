@@ -12,7 +12,7 @@ export async function showDialog(dialogRef, dialogOptions) {
     return await dialogRef.show(dialogOptions)
 }
 
-const DIALOG_CANCEL = 0
-const DIALOG_OK = 1
-const DIALOG_YES = 2
-const DIALOG_NO = 3
+export const DIALOG_CANCEL = 0
+export const DIALOG_OK = 1
+export const DIALOG_YES = 2
+export const DIALOG_NO = 3
